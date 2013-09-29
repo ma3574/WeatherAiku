@@ -1,0 +1,24 @@
+{
+    "version": "1",
+    "name": "WeatherAiku",
+    "launch_path": "index.html",
+    "description": "Weather Application given entirely in Haiku",
+    "icons": {
+        "16": "/images/icon16.png",
+        "32": "/images/icon32.png",
+        "48": "/images/icon48.png",
+        "64": "/images/icon64.png",
+        "128": "/images/icon128.png"
+    },
+    "developer": {
+        "name": "Craig Knott",
+        "url": "http://craigknott.com"
+    },
+    "installs_allowed_from": ["*"],
+    "default_locale": "en",
+    "permissions": {
+        "geolocation": {
+            "description" : "Marking out user location"
+        }
+    }
+}
