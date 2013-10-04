@@ -20,17 +20,43 @@ function getLocation(){
 function getJSON() {
 
     // var requestURI = "http://api.worldweatheronline.com/free/v1/weather.ashx?q=" + phonePos.coords.latitude + "+" + phonePos.coords.longitude +"&format=json&num_of_days=1&key=sk635zud4bwuzmnzvhd4d4sg";
-    //var requestURI = "http://api.worldweatheronline.com/free/v1/weather.ashx?q=37.78937+-122.38912&format=json&num_of_days=1&key=sk635zud4bwuzmnzvhd4d4sg";
+    //var requestURI = "http://api.worldweatheronline.com/free/v1/weather.ashx?q=37.78937" +  "+-122.38912&format=json&num_of_days=1&key=sk635zud4bwuzmnzvhd4d4sg";
     // var requestURI = "http://ip.jsontest.com/";
-    var requestURI = "/local.json";
+    //var requestURI = "/local.json";
     //var requestURI = "http://date.jsontest.com/";
     //alert(requestURI);
     var inputJSON = { "data": { "current_condition": [ {"cloudcover": "0", "humidity": "26", "observation_time": "04:32 PM", "precipMM": "0.0", "pressure": "1017", "temp_C": "18", "temp_F": "64", "visibility": "16", "weatherCode": "113",  "weatherDesc": [ {"value": "Sunny" } ],  "weatherIconUrl": [ {"value": "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0001_sunny.png" } ], "winddir16Point": "N", "winddirDegree": "350", "windspeedKmph": "28", "windspeedMiles": "17" } ],  "request": [ {"query": "Lat 37.79 and Lon -122.39", "type": "LatLon" } ],  "weather": [ {"date": "2013-10-04", "precipMM": "0.0", "tempMaxC": "26", "tempMaxF": "79", "tempMinC": "13", "tempMinF": "55", "weatherCode": "113",  "weatherDesc": [ {"value": "Sunny" } ],  "weatherIconUrl": [ {"value": "http:\/\/cdn.worldweatheronline.net\/images\/wsymbols01_png_64\/wsymbol_0001_sunny.png" } ], "winddir16Point": "NE", "winddirDegree": "38", "winddirection": "NE", "windspeedKmph": "26", "windspeedMiles": "16" } ] }};
+    alert(inputJSON.data.current_condition[0].weatherDesc[0].value);
+    alert(inputJSON.data.current_condition[0].temp_C);
+
+    var weatherArr = new Array();
+    weatherArr["Sunny"] = "It's sunny";
+
+    var haikuText = weatherArr[inputJSON.data.current_condition[0].weatherDesc[0].value];
+
+    document.querySelector('#haiku-display').innerHTML = haikuText;
+
+    if (inputJSON.data.current_condition[0].temp_C < 5) {
+        document.querySelector('#haiku-display').appendChild(document.createTextNode("<br/>It's bloody freezing"));
+    } else {
+        document.querySelector('#haiku-display').appendChild(document.createTextNode("<br/>It's nice and warm"));
+    }
+
+    
+    
+
+    
+
+    //alert(JSON.stringify(requestURI));
 
     // Assign handlers immediately after making the request,
     // and remember the jqxhr object for this request
-    var jsonObj = jQuery.getJSON( requestURI, function() {
-        //alert(JSON.stringify(inputJSON));
+    
+/*
+    var jsonObj = jQuery.getJSON( inputJSON, function() {
+        
+        //alert(JSON.stringify(jsonObj));
+        //alert(jsonObj.responseJSON.time);
         alert(inputJSON.data.current_condition[0].weatherDesc[0].value);
         alert( "success" );
     })
@@ -47,7 +73,7 @@ function getJSON() {
   //  
    // alert("JSON:")
     //alert();
-
+*/
 }
 
 
@@ -68,4 +94,6 @@ var geolocation = document.querySelector("#geolocation"),
                 geolocationDisplay.style.display = "block";
             });
         };
-    }*/
+    }
+
+    */
