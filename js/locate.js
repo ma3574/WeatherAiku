@@ -12,7 +12,25 @@ function getLocation(){
   			"</p><p>Longitude: " + position.coords.longitude + "</p>";
 	});
 
-	
+	getJSON();
+}
+
+function getJSON() {
+
+    // Assign handlers immediately after making the request,
+    // and remember the jqxhr object for this request
+    var jsonObj = jQuery.getJSON( "http://ip.jsontest.com/", function() {
+        alert( "success" );
+    })
+    .done(function() {
+        alert( "second success" );
+    })
+    .fail(function() {
+        alert( "error" );
+    })
+    .always(function() {
+        alert( "complete" );
+    });
 }
 
 /*
